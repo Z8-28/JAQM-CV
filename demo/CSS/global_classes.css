@@ -69,6 +69,17 @@
 	padding: 5px;
 }
 
+.top_y {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	text-align: center;
+	overflow-y: auto scroll;
+	max-height: 100%;
+	padding: 5px;
+}
+
 .column{
 	display: flex;
 	flex-direction: column;
