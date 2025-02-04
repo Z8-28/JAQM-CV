@@ -56,3 +56,11 @@ body{
 .button_menu:hover{
     background: #363d44;
 }
+
+
+
+@media screen and (max-width: 1040px) {
+    #menu {
+        width: 0px;
+    }
+}
