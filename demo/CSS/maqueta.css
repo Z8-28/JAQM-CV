@@ -63,4 +63,8 @@ body{
     #menu {
         width: 0px;
     }
+
+    #sub_screen{
+        width: 100vw;
+    }
 }
