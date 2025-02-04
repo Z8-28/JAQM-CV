@@ -1,3 +1,11 @@
+.aux_screen{
+	max-height: 90%;
+	max-width: 90%;
+	overflow: hidden;
+	padding: 5px;
+	margin: 5px;
+}/*******/
+
 .button {
 	background-color: #198754;
 	border-radius: 5px;
@@ -14,6 +22,7 @@
 	display:block;
 	height: 100%;
 	width: auto;
+	max-width: 90%;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
