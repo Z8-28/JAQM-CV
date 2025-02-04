@@ -1,3 +1,11 @@
+.aux_screen{
+	max-height: 90%;
+	max-width: 90%;
+	overflow: hidden;
+	padding: 5px;
+	margin: 5px;
+}
+
 .button {
 	background-color: #198754;
 	border-radius: 5px;
@@ -13,6 +21,7 @@
 
 .carousel {
 	overflow: hidden;
+	max-width: 90%;
 }
 
 .carousel_container {
@@ -26,7 +35,7 @@
 	overflow-y:auto;
 }
 
-.carousel_item_container{
+.carousel_item_container {
 	width: 100%;
 	height: auto;
 	max-height: 50vh;
@@ -73,7 +82,7 @@
 	border-radius: 10px;
 	height: auto;
 	max-height: 70vh;
-	max-width: 90vw;
+	max-width: 90%;
 	overflow: hidden;
 	width: auto;
 	margin: 2vh 2vw 2vh 2vw;
@@ -147,11 +156,11 @@
 	.table td {
 		border-bottom: dotted 2px;
 		max-width: 200px;
-		min-width: 150px;
+		/*min-width: 150px;*/
 		overflow: hidden;
 		padding: 10px;
 		text-overflow: ellipsis;
-		width: 200px;
+		width: 40%;
 		font-size: 30px;
 	}
 
