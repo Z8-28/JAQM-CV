@@ -18,6 +18,15 @@
 		background-color: #157347;
 	}
 
+.button_container{
+	display:block;
+	max-height: 90%;
+	max-width: 90%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 5%;
+	margin: 5%;
+}
 
 .carousel {
 	overflow: hidden;
