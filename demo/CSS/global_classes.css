@@ -74,7 +74,7 @@
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
-	text-align: center;
+	text-align: start;
 	overflow-y: auto scroll;
 	max-height: 100%;
 	padding: 5px;
