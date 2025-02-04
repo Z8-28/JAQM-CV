@@ -76,3 +76,9 @@ body{
         height: 80vh;
     }
 }
+
+@media screen and (min-aspect-ratio: 4/3) {
+    body {
+        height: 100vh;
+    }
+}
