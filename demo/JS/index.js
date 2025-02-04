@@ -9,6 +9,6 @@ function menu_size() {
     }else {
         menu.style.width = "0px";
         btn.style.width = "0px";
-        screen.style.width = "100vw";
+        screen.style.width = "100%";
     }
 }
