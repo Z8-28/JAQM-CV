@@ -180,3 +180,21 @@
 		display: flex;
 	}
 }
+
+@media screen and (max-height: 800px){
+
+	.text, .input {
+		font-size: 20px;
+		/*30*/
+	}
+
+	.table td, .table tr {
+		font-size: 20px;
+		/*30*/
+	}
+
+	.label {
+		font-size: 30px;
+		/*40*/
+	}
+}
