@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+    read()
+});
+
+
+function read() {
+
     function onScanSuccess(qrMessage) {
         // Mostrar el resultado en el campo de entrada
         const miInput = document.getElementById("miInput");
@@ -27,4 +33,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }, onScanSuccess, onScanError).catch(err => {
         console.error("No se pudo iniciar el escaneo.", err);
     });
-});
+}
