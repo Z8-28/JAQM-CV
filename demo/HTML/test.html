@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Escanear Codigo QR con la Camara</title>
+    <title>Escanear Código QR con la Cámara</title>
     <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <style>
+        #qr-reader {
+            width: 500px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Escanear Codigo QR</h1>
-    <div id="qr-reader" style="width:500px"></div>
-    <input type="text" id="miInput" placeholder="Resultado del escaneo 1" readonly>
-    <button onclick="read()">Leer QR</button>
+    <h1>Escanear Código QR</h1>
+    <div id="qr-reader"></div>
+    <input type="text" id="miInput" placeholder="Resultado del escaneo" readonly>
 
-    <!--<script src="../JS/test.js"></script>-->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function onScanSuccess(qrMessage) {
@@ -42,7 +46,6 @@
                 console.error("No se pudo iniciar el escaneo.", err);
             });
         });
-
     </script>
 </body>
 </html>
