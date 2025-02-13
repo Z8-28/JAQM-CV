@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="head">
-        <button id="menu_button" onclick="menu_size()">Menu</button>
+        <button id="menu_button" onclick="menu_size()">Ocultar Menu</button>
     </div>
     <div id="main_screen">
         <div id="menu">
@@ -24,9 +24,13 @@
             <div class="centred_y">
                 <h1 class="label centred_y">Boleta</h1>
                 <form class="centred_y form">
-                    <input class="input centred_y" type="text" placeholder="# Boleta" required />
+                    <div class="section">
+                        <div id="my-qr-reader">
+                        </div>
+                    </div>
+                    <div id="loading"><p>Cargando lector QR...</p></div>
+                    <input class="input centred_y" id="qr_resultado" type="text" placeholder="# Boleta" required />
                     <button class="input button" type="submit" onclick="show()">Ingresar Boleta</button>
-                    <button class="input button" type="button" onclick="show()">Leer QR</button>
                 </form>
             </div>
             <!------------------------------------------------------------------------------------------>
@@ -34,6 +38,9 @@
             <!------------------------------------------------------------------------------------------>
         </div>
     </div>
+    <script src="https://unpkg.com/html5-qrcode">
+    </script>
+    <script src="../JS/leer_boleta_view.js"></script>
     <script src="../JS/carousel.js"></script>
     <script src="../JS/redirect.js"></script>
     <script src="../JS/index.js"></script>
