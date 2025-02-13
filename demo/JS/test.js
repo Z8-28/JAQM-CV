@@ -1,50 +1,26 @@
-/*const video = document.getElementById("video");
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
-const resultado = document.getElementById("resultado");
+// script.js file
 
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-    .then(stream => {
-        video.srcObject = stream;
-        video.play();
-        escanearQR();
-    })
-    .catch(err => console.error("Error al acceder a la camara: ", err));
-
-function escanearQR() {
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.getIMage(video, 0, 0, canvas.width, canvas.height)
+function domReady(fn) {
+    if (
+        document.readyState === "complete" ||
+        document.readyState === "interactive"
+    ) {
+        setTimeout(fn, 1000);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
     }
-}*/
-
-
-const video = document.getElementById("video");
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
-const resultado = document.getElementById("resultado");
-
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-    .then(stream => {
-        video.srcObject = stream;
-        video.play();
-        escanearQR();
-    })
-    .catch(err => console.log("Error al acceder a la camara: ", err));
-
-function escanearQR() {
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImageData(video, 0, 0, canvas.width, canvas.height);
-        let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        let qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-
-        if (qrCode) {
-            resultado.textContent = qrCode.data;
-            console.log("Codigo QR detectado: ", qrCode.data);
-        }
-    }
-    requestAnimationFrame(escanearQR);
 }
+
+domReady(function () {
+
+    // If found you qr code
+    function onScanSuccess(decodeText, decodeResult) {
+        alert("You Qr is : " + decodeText, decodeResult);
+    }
+
+    let htmlscanner = new Html5QrcodeScanner(
+        "my-qr-reader",
+        { fps: 10, qrbos: 250 }
+    );
+    htmlscanner.render(onScanSuccess);
+});

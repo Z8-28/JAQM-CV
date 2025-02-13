@@ -1,95 +1,27 @@
+<!-- Index.html file -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
-    <title>Escanear Código QR con la Cámara</title>
-    <style>
-        body {
-            width: 100%;
-        }
-
-        canvas {
-            display: none;
-        }
-    </style>
-    <script>
-        var video, canvas, msg;
-        var load = function () {
-            video = document.getElementById('video');
-            canvas = document.getElementById('canvas');
-            msg = document.getElementById('error');
-            if (navigator.getUserMedia) {
-                video.onclick = function () {
-                    var context = canvas.getContext("2d");
-                    context.drawImage(video, 0, 0, 240, 320);
-                    var image = {
-                        "demo": {
-                            "type": "device",
-                            "image": canvas.toDataURL("image/png")
-                        }
-                    };
-                };
-                var success = function (stream) {
-                    video.src = stream;
-                };
-                var error = function (err) {
-                    msg.innerHTML = "Error: " + err.code;
-                };
-                navigator.getUserMedia('video', success, error);
-            } else {
-                msg.innerHTML = "Native web camera not supported :(";
-            }
-        };
-        window.addEventListener('DOMContentLoaded', load, false);
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>
+        Local QR Reader
+    </title>
 </head>
+
 <body>
-    <h1>Escanear Código QR</h1>
-    <!--<video id="video" autoplay></video>
-    <canvas id="canvas" style="display: none;"></canvas>
-    <p>
-        <strong>Resultado:</strong>
-        <span id="resultado">Esperando...</span>
-    </p>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
-    <script>
-
-        const video = document.getElementById("video");
-        const canvas = document.getElementById("canvas");
-        const context = canvas.getContext("2d");
-        const resultado = document.getElementById("resultado");
-
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-            .then(stream => {
-                video.srcObject = stream;
-                video.play();
-                escanearQR();
-            })
-            .catch(err => console.log("Error al acceder a la camara: ", err));
-
-        function escanearQR() {
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImageData(video, 0, 0, canvas.width, canvas.height);
-                let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                let qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-
-                if (qrCode) {
-                    resultado.textContent = qrCode.data;
-                    console.log("Codigo QR detectado: ", qrCode.data);
-                }
-            }
-            requestAnimationFrame(escanearQR);
-        }
-
-    </script>-->
-
-
-    <video id="video" width="240" height="320" autoplay> </video>
-    <p id="error">Click on the video to send a snapshot to the receiving screen</p>
-    <canvas id="canvas" width="240" height="320"> </canvas>
-
+    <div class="container">
+        <h1>Scan QR Codes</h1>
+        <div class="section">
+            <div id="my-qr-reader">
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/html5-qrcode">
+    </script>
+    <script src="../JS/test.js"></script>
 </body>
+
 </html>
