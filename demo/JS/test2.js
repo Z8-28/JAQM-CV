@@ -13,6 +13,7 @@ function domReady(fn) {
 
 
 domReady(function () {
+    const htmlscanner = document.getElementById("my-qr-reader")
     // If found you qr code
     function onScanSuccess(decodeText, decodeResult) {
         //alert("You Qr is : " + decodeText, decodeResult);
@@ -20,10 +21,10 @@ domReady(function () {
         texto.innerHTML = decodeText;
     }
 
-    let htmlscanner = new Html5QrcodeScanner(
+    /*let htmlscanner = new Html5QrcodeScanner(
         "my-qr-reader",
         { fps: 10, qrbos: 250 }
-    );
+    );*/
 
     htmlscanner.render(onScanSuccess);
 
