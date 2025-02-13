@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <title>Escanear Código QR con la Cámara</title>
+    <style>
+        body {
+            width: 100%;
+        }
 
+        canvas {
+            display: none;
+        }
+    </style>
+    <script>
+        var video, canvas, msg;
+        var load = function () {
+            video = document.getElementById('video');
+            canvas = document.getElementById('canvas');
+            msg = document.getElementById('error');
+            if (navigator.getUserMedia) {
+                video.onclick = function () {
+                    var context = canvas.getContext("2d");
+                    context.drawImage(video, 0, 0, 240, 320);
+                    var image = {
+                        "demo": {
+                            "type": "device",
+                            "image": canvas.toDataURL("image/png")
+                        }
+                    };
+                };
+                var success = function (stream) {
+                    video.src = stream;
+                };
+                var error = function (err) {
+                    msg.innerHTML = "Error: " + err.code;
+                };
+                navigator.getUserMedia('video', success, error);
+            } else {
+                msg.innerHTML = "Native web camera not supported :(";
+            }
+        };
+        window.addEventListener('DOMContentLoaded', load, false);
+    </script>
 </head>
 <body>
     <h1>Escanear Código QR</h1>
-    <video id="video" autoplay></video>
+    <!--<video id="video" autoplay></video>
     <canvas id="canvas" style="display: none;"></canvas>
     <p>
         <strong>Resultado:</strong>
         <span id="resultado">Esperando...</span>
     </p>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
     <script>
 
@@ -45,6 +84,12 @@
             requestAnimationFrame(escanearQR);
         }
 
-    </script>
+    </script>-->
+
+
+    <video id="video" width="240" height="320" autoplay> </video>
+    <p id="error">Click on the video to send a snapshot to the receiving screen</p>
+    <canvas id="canvas" width="240" height="320"> </canvas>
+
 </body>
 </html>
