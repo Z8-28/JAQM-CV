@@ -1,19 +1,36 @@
 // CREATE - UPDATE
+
+const flag = "@"
+
 function save() {
     const name = document.getElementById("name").value;
-    const message = document.getElementById("textArea").value;
-    console.log(name, message);
-    localStorage.setItem(name, message);
+    const lat = document.getElementById("lat").value;
+    const lon = document.getElementById("lon").value;
+    console.log(name, lat+flag+lon);
+    localStorage.setItem(name, lat + flag + lon);
 }
 
 
 // READ
 function load() {
     const name = document.getElementById("name").value;
-    const message = document.getElementById("textArea");
+    const lat = document.getElementById("lat");
+    const lon = document.getElementById("lon");
     const data = localStorage.getItem(name);
-    message.value = data
-    console.log("Registro guardado como: " + name)
+    let aux = "";
+    let x = 0;
+    while (data[x] != flag && x<20) {
+        aux = aux + data[x]
+        x++;
+    }
+    x++;
+    lat.value = aux;
+    aux = "";
+    while (x < data.length && x < 20) {
+        aux = aux + data[x]
+        x++;
+    }
+    lon.value=aux
 }
 
 function search() {
