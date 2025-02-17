@@ -80,17 +80,6 @@
     overflow: hidden;
 }
 
-.top_y {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    text-align: center;
-    overflow-y: auto scroll;
-    max-height: 100%;
-    padding: 5px;
-}
-
 .column {
     display: flex;
     flex-direction: column;
@@ -218,6 +207,17 @@
     width: 45%;
     text-align: left;
     overflow: hidden;
+}
+
+.top_y {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto scroll;
+    max-height: 100%;
+    padding: 5px;
 }
 
 @media screen and (min-aspect-ratio: 4/3) {

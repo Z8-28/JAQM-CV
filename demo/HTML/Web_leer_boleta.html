@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/global_classes.css" />
-    <link rel="stylesheet" href="../CSS/maqueta.css" />
+    <link rel="stylesheet" href="../CSS/Web_Vistas.css" />
+    <link rel="stylesheet" href="../CSS/Web_maqueta.css" />
     <title>Multi Commodities</title>
 </head>
 <body>
@@ -22,16 +22,22 @@
             <!------------------------------------------------------------------------------------------>
             <!------------------------------------------------------------------------------------------>
             <div class="centred_y">
-                <h1 class="label centred_y">Boleta</h1>
-                <form class="centred_y form">
-                    <div class="section container">
-                        <div id="my-qr-reader">
+                <div class="card">
+                    <h2 class="card-header">Boleta</h2>
+                    <div class="card-body">
+                        <div class="centred_y">
+                            <form class="centred_y form">
+                                <div class="section container">
+                                    <div id="my-qr-reader">
+                                    </div>
+                                </div>
+                                <div id="loading"><p>Cargando lector QR...</p></div>
+                                <input class="input centred_y" id="qr_resultado" type="text" placeholder="# Boleta" required />
+                                <button class="input button" type="submit" onclick="show()">Ingresar Boleta</button>
+                            </form>
                         </div>
                     </div>
-                    <div id="loading"><p>Cargando lector QR...</p></div>
-                    <input class="input centred_y" id="qr_resultado" type="text" placeholder="# Boleta" required />
-                    <button class="input button" type="submit" onclick="show()">Ingresar Boleta</button>
-                </form>
+                </div>
             </div>
             <!------------------------------------------------------------------------------------------>
             <!------------------------------------------------------------------------------------------>
@@ -40,16 +46,7 @@
     </div>
     <script src="https://unpkg.com/html5-qrcode">
     </script>
-    <script src="../JS/leer_boleta_view.js"></script>
-    <script src="../JS/carousel.js"></script>
-    <script src="../JS/redirect.js"></script>
-    <script src="../JS/index.js"></script>
-    <script>
-        function confirmar() {
-            if (confirm("¿Desea leer otra boleta?")) {
-                location.href = 'leer_boleta.html';
-            }
-        }
-    </script>
+    <script src="../JS/script__qr.js"></script>
+    <script src="../JS/script__redirect.js"></script>
 </body>
 </html>
