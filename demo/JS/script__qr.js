@@ -43,18 +43,14 @@ domReady(function () {
         //save_data(decodeText);
     }
     loading.innerHTML = "Leiendo codigo 2/4...";
-    try {
-        let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
-        loading.innerHTML = "Leiendo codigo 3/4...";
-        htmlscanner.render(onScanSuccess);
-        loading.innerHTML = "Leiendo codigo 4/4...";
-        //actualizar_interface();
-        actualizar_pantalla();
-        if (loading) {
-            loading.remove();
-        }
-    } catch(ex) {
-        loading.innerHTML = ex
+    let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
+    loading.innerHTML = "Leiendo codigo 3/4...";
+    htmlscanner.render(onScanSuccess);
+    loading.innerHTML = "Leiendo codigo 4/4...";
+    //actualizar_interface();
+    actualizar_pantalla();
+    if (loading) {
+        loading.remove();
     }
 });
 
@@ -76,7 +72,7 @@ async function actualizar_pantalla() {
             console.error("Error en actualizar_interface:", e);
             clearInterval(intervalId); // Detener el intervalo en caso de error
         }
-    }, 5000);
+    }, 500);
 }
 
 
