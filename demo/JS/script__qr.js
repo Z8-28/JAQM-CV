@@ -35,7 +35,8 @@ domReady(function () {
             mensaje = mensaje + decodeText[x];
             x++;
         }
-        texto.value = mensaje;
+        //texto.value = mensaje;
+        texto.value = decodeText
 
         //actualizar_interface();
         mensage = decodeText;
@@ -89,6 +90,8 @@ function actualizar_interface() {
     const div_1 = document.getElementById("my-qr-reader__dashboard_section");
     const img_container = div_1.getElementsByTagName("div")[3];
     const img_label = img_container.getElementsByTagName("div")[0];
+    const btn_start_scann = document.getElementById("html5-qrcode-button-camera-start");
+    const btn_stop_scann = document.getElementById("html5-qrcode-button-camera-stop");
 
     tmp_code.textContent = qr_container.innerHTML;
 
@@ -114,6 +117,14 @@ function actualizar_interface() {
         } else if (alerta.innerHTML === "NotFoundError: Requested device not found" || alerta.innerHTML==="") {
             alerta.innerHTML = "No se encontro ninguna camara";
         }
+    }
+
+    if (btn_start_scann) {
+        btn_start_scann.className = "html5-qrcode-element input button"
+    }
+
+    if (btn_stop_scann) {
+        btn_stop_scann.className = "html5-qrcode-element input button"
     }
 
     if (img_label) {
