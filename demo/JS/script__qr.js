@@ -25,26 +25,26 @@ domReady(function () {
 
     no_boleta.readOnly = true;
     loading.innerHTML = "Leiendo codigo 1/4...";
-    function onScanSuccess(decodeText, decodeResult) {
-        const texto = document.getElementById("qr_resultado");
-
-        //Cambiar la logica del while cuando se tenga ya la bandera asignada para separar los datos
-        let x = 0;
-        mensaje = "";
-        while (decodeText[x] != "@") {
-            mensaje = mensaje + decodeText[x];
-            x++;
-        }
-        texto.value = mensaje;
-        //texto.value = decodeText
-
-        //actualizar_interface();
-        mensage = decodeText;
-        //actualizar_interface();
-        //save_data(decodeText);
-    }
-    loading.innerHTML = "Leiendo codigo 2/4...";
     try {
+        function onScanSuccess(decodeText, decodeResult) {
+            const texto = document.getElementById("qr_resultado");
+
+            //Cambiar la logica del while cuando se tenga ya la bandera asignada para separar los datos
+            let x = 0;
+            mensaje = "";
+            while (decodeText[x] != "@") {
+                mensaje = mensaje + decodeText[x];
+                x++;
+            }
+            texto.value = mensaje;
+            //texto.value = decodeText
+
+            //actualizar_interface();
+            mensage = decodeText;
+            //actualizar_interface();
+            //save_data(decodeText);
+        }
+        loading.innerHTML = "Leiendo codigo 2/4...";
         let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
         loading.innerHTML = "Leiendo codigo 3/4...";
         htmlscanner.render(onScanSuccess);
