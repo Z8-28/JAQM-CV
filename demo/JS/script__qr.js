@@ -19,6 +19,7 @@ function domReady(fn) {
 
 domReady(function () {
     // If found you qr code
+    actualizar_pantalla();
     const loading = document.getElementById("loading");
     const no_boleta = document.getElementById("qr_resultado");
 
@@ -36,8 +37,9 @@ domReady(function () {
         }
         texto.value = mensaje;
 
-        actualizar_interface();
+        //actualizar_interface();
         mensage = decodeText;
+        //actualizar_interface();
         //save_data(decodeText);
     }
     loading.innerHTML = "Leiendo codigo 2/4...";
@@ -45,7 +47,8 @@ domReady(function () {
     loading.innerHTML = "Leiendo codigo 3/4...";
     htmlscanner.render(onScanSuccess);
     loading.innerHTML = "Leiendo codigo 4/4...";
-    actualizar_interface();
+    //actualizar_interface();
+    actualizar_pantalla();
     if (loading) {
         loading.remove();
     }
@@ -61,10 +64,24 @@ function save_data() {
     }
 }
 
+async function actualizar_pantalla() {
+    const intervalId = setInterval(function () {
+        try {
+            actualizar_interface();
+        } catch (e) {
+            console.error("Error en actualizar_interface:", e);
+            clearInterval(intervalId); // Detener el intervalo en caso de error
+        }
+    }, 500);
+}
+
+
 function actualizar_interface() {
+    const tmp_code = document.getElementById("codigo");
+    /////////////////////////////////
     const link = document.getElementById("html5-qrcode-anchor-scan-type-change");
     const alerta = document.getElementById("my-qr-reader__header_message");
-    const qr_container = document.getElementById("my-qr-reader");
+    const qr_container = document.getElementById("my-qr-reader");   ///
     const info = qr_container.getElementsByTagName("div");
     const more_info = info[0].getElementsByTagName("img");
     const button_camera = document.getElementById("html5-qrcode-button-camera-permission");
@@ -73,6 +90,7 @@ function actualizar_interface() {
     const img_container = div_1.getElementsByTagName("div")[3];
     const img_label = img_container.getElementsByTagName("div")[0];
 
+    tmp_code.textContent = qr_container.innerHTML;
 
     button_camera.innerHTML = "Activar Camara";
     button_camera.className = "input button";
@@ -84,31 +102,18 @@ function actualizar_interface() {
 
     if (more_info && first) {
         more_info[0].remove();
+        first = false;
     } else {
         console.clear();
         console.log("el elemento no existe o ya fue eliminado")
     }
 
-    if (first) {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            actualizar_interface();
-        });
-        button_camera.addEventListener("click", function (event) {
-            event.preventDefault();
-            actualizar_interface();
-        });
-        first = false;
-    }
-
     if (alerta) {
-        console.log(alerta.innerHTML)
         if (alerta.innerHTML === "Requesting camera permissions...") {
             alerta.innerHTML = "Solicitando permisos para usar la camara";
-        } else /*if (alerta.innerHTML === "NotFoundError: Requested device not found" || alerta.innerHTML==="")*/ {
+        } else if (alerta.innerHTML === "NotFoundError: Requested device not found" || alerta.innerHTML==="") {
             alerta.innerHTML = "No se encontro ninguna camara";
         }
-        console.log(alerta.innerHTML)
     }
 
     if (img_label) {
