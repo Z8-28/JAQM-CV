@@ -70,9 +70,15 @@ function save_data() {
 }
 
 async function actualizar_pantalla() {
+    const flag = document.getElementById("actualizando_interface");
     const intervalId = setInterval(function () {
         try {
             actualizar_interface();
+            if (flag.innerHTML != "1") {
+                flag.innerHTML = "1"
+            } else {
+                flag.innerHTML = "2"
+            }
         } catch (e) {
             console.error("Error en actualizar_interface:", e);
             clearInterval(intervalId); // Detener el intervalo en caso de error
