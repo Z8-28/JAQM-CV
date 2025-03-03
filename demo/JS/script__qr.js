@@ -74,16 +74,12 @@ async function actualizar_pantalla() {
     const intervalId = setInterval(function () {
         try {
             actualizar_interface();
-            if (flag.innerHTML != "1") {
-                flag.innerHTML = "1"
-            } else {
-                flag.innerHTML = "2"
-            }
         } catch (e) {
             console.error("Error en actualizar_interface:", e);
+            flag.innerHTML = "0"
             clearInterval(intervalId); // Detener el intervalo en caso de error
         }
-    }, 500);
+    }, 1000);
 }
 
 
