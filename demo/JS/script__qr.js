@@ -72,7 +72,7 @@ async function actualizar_pantalla() {
             console.error("Error en actualizar_interface:", e);
             clearInterval(intervalId); // Detener el intervalo en caso de error
         }
-    }, 500);
+    }, 5000);
 }
 
 
