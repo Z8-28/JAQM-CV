@@ -75,7 +75,7 @@ async function actualizar_pantalla() {
         try {
             actualizar_interface();
         } catch (e) {
-            console.error("Error en actualizar_interface:", e);
+            console.error(e);
             flag.innerHTML = e
             clearInterval(intervalId); // Detener el intervalo en caso de error
         }
@@ -101,13 +101,24 @@ function actualizar_interface() {
 
     tmp_code.textContent = qr_container.innerHTML;
 
-    button_camera.innerHTML = "Activar Camara";
-    button_camera.className = "input button";
-    button_img.innerHTML = "Buscar imagen";
-    button_img.className = "input button";
-    qr_container.style.border = "0px";
-    qr_container.style.width = "300px";
-    link.innerHTML = "usar otra opcion";
+    if (button_camera) {
+        button_camera.innerHTML = "Activar Camara";
+        button_camera.className = "input button";
+    }
+
+    if (button_img) {
+        button_img.innerHTML = "Buscar imagen";
+        button_img.className = "input button";
+    }
+
+    if (qr_container) {
+        qr_container.style.border = "0px";
+        qr_container.style.width = "300px";
+    }
+
+    if (link) {
+        link.innerHTML = "usar otra opcion";
+    }
 
     if (more_info && first) {
         more_info[0].remove();
