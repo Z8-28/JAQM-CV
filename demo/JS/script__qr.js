@@ -43,14 +43,18 @@ domReady(function () {
         //save_data(decodeText);
     }
     loading.innerHTML = "Leiendo codigo 2/4...";
-    let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
-    loading.innerHTML = "Leiendo codigo 3/4...";
-    htmlscanner.render(onScanSuccess);
-    loading.innerHTML = "Leiendo codigo 4/4...";
-    //actualizar_interface();
-    actualizar_pantalla();
-    if (loading) {
-        loading.remove();
+    try {
+        let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
+        loading.innerHTML = "Leiendo codigo 3/4...";
+        htmlscanner.render(onScanSuccess);
+        loading.innerHTML = "Leiendo codigo 4/4...";
+        //actualizar_interface();
+        actualizar_pantalla();
+        if (loading) {
+            loading.remove();
+        }
+    } catch(ex) {
+        loading.innerHTML = ex
     }
 });
 
