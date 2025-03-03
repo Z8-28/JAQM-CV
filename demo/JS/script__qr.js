@@ -32,12 +32,12 @@ domReady(function () {
             //Cambiar la logica del while cuando se tenga ya la bandera asignada para separar los datos
             let x = 0;
             mensaje = "";
-            while (decodeText[x] != "@") {
-                mensaje = mensaje + decodeText[x];
-                x++;
-            }
-            texto.value = mensaje;
-            //texto.value = decodeText
+            //while (decodeText[x] != "@") {
+            //    mensaje = mensaje + decodeText[x];
+            //    x++;
+            //}
+            //texto.value = mensaje;
+            texto.value = decodeText
 
             //actualizar_interface();
             mensage = decodeText;
@@ -61,12 +61,12 @@ domReady(function () {
 
 function save_data() {
     const texto = document.getElementById("qr_resultado");
-    if (texto.value != "") {
-        localStorage.setItem("boleta", mensage);
-        alert("Boleta escaneada exitosamente");
-    } else {
-        alert("No se ha escaneado ninguna boleta");
-    }
+    //if (texto.value != "") {
+    //    localStorage.setItem("boleta", mensage);
+    //    alert("Boleta escaneada exitosamente");
+    //} else {
+    //    alert("No se ha escaneado ninguna boleta");
+    //}
 }
 
 async function actualizar_pantalla() {
@@ -132,7 +132,7 @@ function actualizar_interface() {
     if (btn_stop_scann) {
         //btn_stop_scann.className = "html5-qrcode-element input button";
         btn_stop_scann.className = "input button";
-        btn_start_scann.innerHTML = "Parar de escanear";
+        btn_stop_scann.innerHTML = "Parar de escanear";
     }
 
     if (img_label) {
