@@ -124,12 +124,14 @@ function actualizar_interface() {
     }
 
     if (btn_start_scann) {
-        btn_start_scann.className = "html5-qrcode-element input button";
+        //btn_start_scann.className = "html5-qrcode-element input button";
+        btn_start_scann.className = "input button";
         btn_start_scann.innerHTML = "Escanear";
     }
 
     if (btn_stop_scann) {
-        btn_stop_scann.className = "html5-qrcode-element input button";
+        //btn_stop_scann.className = "html5-qrcode-element input button";
+        btn_stop_scann.className = "input button";
         btn_start_scann.innerHTML = "Parar de escanear";
     }
 
