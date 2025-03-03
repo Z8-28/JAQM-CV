@@ -76,7 +76,7 @@ async function actualizar_pantalla() {
             actualizar_interface();
         } catch (e) {
             console.error("Error en actualizar_interface:", e);
-            flag.innerHTML = "0"
+            flag.innerHTML = e
             clearInterval(intervalId); // Detener el intervalo en caso de error
         }
     }, 1000);
