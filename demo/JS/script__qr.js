@@ -1,7 +1,10 @@
 // script.js file
 
+//const { Button } = require("../Scripts/bootstrap.bundle");
+
 var qr = false;
 var first = true;
+var mensage = "";
 
 function domReady(fn) {
     if (
@@ -23,8 +26,19 @@ domReady(function () {
     loading.innerHTML = "Leiendo codigo 1/4...";
     function onScanSuccess(decodeText, decodeResult) {
         const texto = document.getElementById("qr_resultado");
-        texto.value = decodeText;
+
+        //Cambiar la logica del while cuando se tenga ya la bandera asignada para separar los datos
+        let x = 0;
+        mensaje = "";
+        while (decodeText[x] != "@") {
+            mensaje = mensaje + decodeText[x];
+            x++;
+        }
+        texto.value = mensaje;
+
         actualizar_interface();
+        mensage = decodeText;
+        //save_data(decodeText);
     }
     loading.innerHTML = "Leiendo codigo 2/4...";
     let htmlscanner = new Html5QrcodeScanner("my-qr-reader", { fps: 10, qrbox: 250 });
@@ -37,9 +51,19 @@ domReady(function () {
     }
 });
 
+function save_data() {
+    const texto = document.getElementById("qr_resultado");
+    if (texto.value != "") {
+        localStorage.setItem("boleta", mensage);
+        alert("Boleta escaneada exitosamente");
+    } else {
+        alert("No se ha escaneado ninguna boleta");
+    }
+}
+
 function actualizar_interface() {
     const link = document.getElementById("html5-qrcode-anchor-scan-type-change");
-    const alert = document.getElementById("my-qr-reader__header_message");
+    const alerta = document.getElementById("my-qr-reader__header_message");
     const qr_container = document.getElementById("my-qr-reader");
     const info = qr_container.getElementsByTagName("div");
     const more_info = info[0].getElementsByTagName("img");
@@ -70,15 +94,24 @@ function actualizar_interface() {
             event.preventDefault();
             actualizar_interface();
         });
+        button_camera.addEventListener("click", function (event) {
+            event.preventDefault();
+            actualizar_interface();
+        });
         first = false;
     }
 
-    if (alert) {
-        alert.innerHTML = "No se encontro ninguna camara";
+    if (alerta) {
+        console.log(alerta.innerHTML)
+        if (alerta.innerHTML === "Requesting camera permissions...") {
+            alerta.innerHTML = "Solicitando permisos para usar la camara";
+        } else /*if (alerta.innerHTML === "NotFoundError: Requested device not found" || alerta.innerHTML==="")*/ {
+            alerta.innerHTML = "No se encontro ninguna camara";
+        }
+        console.log(alerta.innerHTML)
     }
 
     if (img_label) {
         img_label.innerHTML = "O arrastra una imagen";
     }
-
 }
